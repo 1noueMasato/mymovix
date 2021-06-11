@@ -55,13 +55,16 @@ class MoviesController extends Controller
     }
 
     public function update(Request $request, Movie $movie){
+
+    
+
         $movie->title = $request->title;
         $movie->content = $request->content;
         $movie->screening_start_date = $request->screening_start_date;
         $movie->screening_end_date = $request->screening_end_date;
         $movie->cast = $request->cast;
         $movie->staff = $request->staff;
-        dd($movie);
+       
 
         $movie->save();
 

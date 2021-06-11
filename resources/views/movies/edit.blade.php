@@ -13,12 +13,12 @@
             更新したい情報を入力してください。
         </div>
         <div class="card-body">
-            <form action="{{ route('movies.update', $movie->id) }}" method="post">
+            <form action="{{ route('movies.update', $movie) }}" method="post">
+                {{-- ここでpatchを書いておかないとルーティングでgetでもなくpostでもなく、patchを使えない --}}
+                {{ method_field('patch') }}
+                                {{-- @method('PATCH') --}}
                 {{ csrf_field() }}
                 {{-- フォームにはcsrf対策のこの記述がないとエラーになる --}}
-
-                {{ method_field('patch') }}
-                {{-- ここでpatchを書いておかないとルーティングでgetでもなくpostでもなく、patchを使えない --}}
 
                 <div class="form-group">
                     <label for="">タイトル</label>

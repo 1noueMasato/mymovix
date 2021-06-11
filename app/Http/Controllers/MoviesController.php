@@ -61,8 +61,10 @@ class MoviesController extends Controller
         $movie->screening_end_date = $request->screening_end_date;
         $movie->cast = $request->cast;
         $movie->staff = $request->staff;
+        dd($movie);
 
         $movie->save();
-        return redirect('movies.editablelist');
+
+        return redirect('/');
     }
 }

@@ -21,14 +21,15 @@ class CreateMoviesTable extends Migration
             $table->date('screening_end_date')->nullable();
             $table->string('cast')->nullable();
             $table->string('staff')->nullable();
+            $table->text('eirin_division')->nullable();
             $table->string('main_img')->nullable();
             $table->string('detail_img_1')->nullable();
             $table->string('detail_img_2')->nullable();
             $table->string('detail_img_3')->nullable();
             $table->string('detail_img_4')->nullable();
             $table->timestamps();
-            // 改善案：contentの文字数を増やす。映画の画像（TOP用、詳細用）を読み込めるようにする。上映時間。作品の料金、注意事項。
-
+            // 改善案1：contentの文字数を増やす。映画の画像（TOP用、詳細用）を読み込めるようにする。
+            //改善案2:上映時間。作品の料金、注意事項。
         });
     }
 

@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//画面テスト用
+// Route::get('/', function () {
+//     return view('sample');
+// });
+
 
 //Top画面
 Route::get('/', 'App\Http\Controllers\MoviesController@index');

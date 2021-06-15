@@ -78,6 +78,7 @@
         </div>
     </header>
     <main>
+        <img src="{{ asset('img/icon/eirin_g.jpg') }}" alt="">
         <div id="outarea_aa">outarea_aa</div>
         <section class=" py-5">
             <h2 class=" text-center mb-5">Features</h2>

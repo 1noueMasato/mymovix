@@ -15,10 +15,20 @@ class Movie extends Model
         'screening_end_date',
         'cast',
         'staff',
+        'eirin_id',
         'main_img',
         'detail_img_1',
         'detail_img_2',
         'detail_img_3',
         'detail_img_4',    
     ];
+
+    public function eirin(){
+        // dd($this);
+        return $this->belongsTo('App\Models\Eirin');
+    }
+
+    //リレーションシップの記述法
+    //１：2つのModelにリレーションを記述（1対多など）。
+    //２：親（1対多の1）のほうは自分のカラムの中の「id」、子は自分のカラムの中の「親のモデル名_id」を紐づける。
 }

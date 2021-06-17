@@ -12,6 +12,7 @@ class MoviesController extends Controller
     //Top画面一覧表示
     public function index(){
         $movies = Movie::oldest()->get(); //created_idが古い順に取得してきて、その中にget。 latest()で古い順
+        $eirin_divisions = Eirin::oldest();
         //$movies =[];
         //dd($movies->toArray());// ddはその場で処理しておわる
         return view('homes.top')->with('movies',$movies); //homesのフォルダ中のtopを返す,withでこの関数で定義した$moviesをmoviesって名前でviewと一緒に（with）returnします
@@ -20,6 +21,7 @@ class MoviesController extends Controller
     //作品詳細
     public function show($id){
         $movie = Movie::findOrFail($id); //idをModel（web.php）の中から探してくる
+        dd($movie->eirin->eirin_division);
         return view('movies.show')->with('movie',$movie);
     }
   

@@ -40,7 +40,7 @@ class EirinsTableSeeder extends Seeder
             [
             'eirin_id'=> '3',
             'eirin_division'=>'R15+', //Ｒ：Restricted（観覧制限）の略号 
-            'eirin_division_icon'=>'img/icon/eirin_r15+.jpg',
+            'eirin_division_icon'=>'img/icon/eirin_r15.jpg',
             'eirin_division_explain'=>'15 歳以上がご覧になれます'
         ]
         );
@@ -51,7 +51,7 @@ class EirinsTableSeeder extends Seeder
             [
             'eirin_id'=> '4',
             'eirin_division'=>'R18+', //Ｒ：Restricted（観覧制限）の略号 
-            'eirin_division_icon'=>'img/icon/eirin_r18+.jpg',
+            'eirin_division_icon'=>'img/icon/eirin_r18.jpg',
             'eirin_division_explain'=>'18 歳以上がご覧になれます '
         ]
         );

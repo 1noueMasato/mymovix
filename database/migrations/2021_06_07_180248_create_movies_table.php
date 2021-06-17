@@ -21,7 +21,7 @@ class CreateMoviesTable extends Migration
             $table->date('screening_end_date')->nullable();
             $table->string('cast')->nullable();
             $table->string('staff')->nullable();
-            $table->text('eirin_id')->nullable();
+            $table->integer('eirin_id');
             $table->string('main_img')->nullable();
             $table->string('detail_img_1')->nullable();
             $table->string('detail_img_2')->nullable();

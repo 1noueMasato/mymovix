@@ -28,12 +28,13 @@
                 </div>
             </div>
         </div>
-       
+
     </section>
     <div class="d-grid gap-2 text-center">
         <button class="btn btn-primary" type="button">チケットを購入する</button>
         <button class="btn button-success" type="button"><a href="{{ route('movies.create') }}"> 上映作品を追加</a></button>
-        <button class="btn button-success" type="button"><a href="{{ route('movies.editablelist') }}"> 作品情報を更新・公開停止</a></button>
+        <button class="btn button-success" type="button"><a href="{{ route('movies.editablelist') }}">
+                作品情報を更新・公開停止</a></button>
     </div>
     <section class="py-5">
         <div class="text-center">
@@ -47,7 +48,18 @@
                         <div class=" list-group-item bg-light">
                             <h3>{{ $movie->title }}</h3>
                             {{-- routeで引数送る場合は()内に記述 --}}
-                            <a href="{{ route('movies.show', [$movie->id]) }}">作品詳細はこちら</a>
+                            <a href="{{ route('movies.show', [$movie->id]) }}">作品詳細</a>
+                            @if ($movie->eirin_id !== 1)
+                                <div class="row my-1">
+                                    <div class=" border border-dark rounded-circle col-1 text-center">
+                                        {{ $movie->eirin->eirin_division }}</div>
+                                </div>
+                                {{-- <div class="row">
+                                    <div class=" col-2 "> --}}
+                                        {{ $movie->eirin->eirin_division_explain }}
+                                    {{-- </div>
+                                </div> --}}
+                            @endif
                         </div>
                     </div>
                 @empty

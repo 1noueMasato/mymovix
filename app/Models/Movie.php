@@ -24,6 +24,7 @@ class Movie extends Model
     ];
 
     public function eirin(){
+        // dd($this);
         return $this->belongsTo('App\Models\Eirin');
     }
 

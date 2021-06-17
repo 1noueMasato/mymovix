@@ -12,7 +12,6 @@ class MoviesController extends Controller
     //Top画面一覧表示
     public function index(){
         $movies = Movie::oldest()->get(); //created_idが古い順に取得してきて、その中にget。 latest()で古い順
-        $eirin_divisions = Eirin::oldest();
         //$movies =[];
         //dd($movies->toArray());// ddはその場で処理しておわる
         return view('homes.top')->with('movies',$movies); //homesのフォルダ中のtopを返す,withでこの関数で定義した$moviesをmoviesって名前でviewと一緒に（with）returnします
@@ -21,14 +20,14 @@ class MoviesController extends Controller
     //作品詳細
     public function show($id){
         $movie = Movie::findOrFail($id); //idをModel（web.php）の中から探してくる
-        dd($movie->eirin->eirin_division);
+        // dd($movie->eirin->eirin_division);
         return view('movies.show')->with('movie',$movie);
     }
   
     //上映作品追加画面
     public function create(){
         // $eirin_divisions =[];
-        $eirin_divisions = Eirin::oldest()->pluck('eirin_division','code'); //pluckは前がキーで、後ろがバリュー
+        $eirin_divisions = Eirin::oldest()->pluck('eirin_division','eirin_id'); //pluckは前がキーで、後ろがバリュー
         // $eirin_divisions = Eirin::oldest()->get();//formファザード使わない版
         // dd($eirin_divisions);
         return view('movies.create')->with('eirin_divisions',$eirin_divisions);
@@ -43,7 +42,7 @@ class MoviesController extends Controller
         $movie->screening_end_date = $request->screening_end_date;
         $movie->cast = $request->cast;
         $movie->staff = $request->staff;
-        $movie->eirin_division = $request->eirin_division;
+        $movie->eirin_id= $request->eirin_id;
       
         $movie->save();
 
@@ -59,7 +58,7 @@ class MoviesController extends Controller
     //作品情報編集画面へ
     public function edit($id){
         $movie = Movie::findOrfail($id);
-        $eirin_divisions = Eirin::oldest()->pluck('eirin_division','code');
+        $eirin_divisions = Eirin::oldest()->pluck('eirin_division','eirin_id');
         // $eirin_divisions = Eirin::oldest()->get(); //formファザード使わない版
         return view('movies.edit')->with('movie',$movie)->with('eirin_divisions',$eirin_divisions);
     }
@@ -72,7 +71,7 @@ class MoviesController extends Controller
         $movie->screening_end_date = $request->screening_end_date;
         $movie->cast = $request->cast;
         $movie->staff = $request->staff;
-        $movie->eirin_division = $request->eirin_division;
+        $movie->eirin_id = $request->eirin_id;
 
         $movie->save();
 

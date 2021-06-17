@@ -17,7 +17,7 @@ class CreateEirinsTable extends Migration
             $table->id();
             $table->integer('eirin_id');
             $table->text('eirin_division');
-            $table->text('eirin_division_icon');
+            $table->string('eirin_division_icon');
             $table->string('eirin_division_explain');
             $table->timestamps();
         });

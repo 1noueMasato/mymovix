@@ -55,9 +55,9 @@
                             rows="10">{{ old('staff', $movie->staff) }}</textarea>
                     </div>
                     <div class="row">
-                        <div class="form-group col-2">
-                            <label for="eirin_division">映倫区分</label>
-                            {!! Form::select('eirin_division', $eirin_divisions, $movie->eirin_division, ['class' => 'form-control col-6']) !!}
+                        <div class="form-group col-3">
+                            <label for="eirin_id">映倫区分</label>
+                            {!! Form::select('eirin_id', $eirin_divisions, $movie->eirin_id, ['class' => 'form-control col-6']) !!}
                             {{-- <select name="eirin_division" id="eirin_division">
                             @foreach ($eirin_divisions as $eirin_division)
                                 <option value="{{ $eirin_division->code}}">{{ $eirin_division->eirin_division}}</option>

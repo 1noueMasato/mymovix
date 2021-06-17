@@ -20,32 +20,7 @@
             <div class=" list-group py-3">
                 <div class=" list-group-item bg-light">
                     <h3>{{ $movie->title }}</h3>
-                    <div>
-                        <div class=" d-inline-block" style="background-color: darkgray">STORY</div>
-                        <p>{{ $movie->content }}</p>
-                    </div>
-                    <div>
-                        <div class=" d-inline-block" style="background-color: darkgray">出演者</div>
-                        <p>{{ $movie->cast }}</p>
-                    </div>
-                    <div>
-                        <div class=" d-inline-block" style="background-color: darkgray">スタッフ</div>
-                        <p>{{ $movie->staff }}</p>
-                    </div>
-                    @if ($movie->eirin_id !== 1)
-                        <div class=" d-inline-block" style="background-color: darkgray">映倫区分</div>
-                        <p>{{ $movie->eirin->eirin_division}}</p>
-                        <div class="row">
-                            <div class=" col-2">
-                                <img src="{!! asset($movie->eirin->eirin_division_icon) !!}" class="img-fluid"  alt="">
-                                {{-- <img src="{!! asset(strval($movie->eirin->eirin_division_icon)) !!}" class="img-fluid"  alt=""> --}}
-                            </div>
-                        </div>
-                        {{-- <img src="{{asset('img/background/blue-cybernetic-background.jpg')}}" alt=""> --}}
-                        {{-- <img src="{{ asset('img/icon/eirin_r15.jpg') }}" alt=""> --}}
-                        {{-- 画像を読み込ませるときはalt=""が必須 +みたいな記号も使わないほうが良い--}}
-                        
-                    @endif
+                    <p>{{ $movie->content }}</p>
                 </div>
             </div>   
         </div>

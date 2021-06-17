@@ -56,17 +56,6 @@
                         <textarea class="form-control" name="staff" id="staff" cols="25" rows="10"
                             value="">{{ old('staff') }}</textarea>
                     </div>
-                    <div class="row">
-                        <div class="form-group col-3">
-                            <label for="eirin_id">映倫区分</label>
-                            {!! Form::select('eirin_id', $eirin_divisions, null, ['class' => 'form-control col-6']) !!}
-                            {{-- <select name="eirin_division" id="eirin_division">
-                            @foreach ($eirin_divisions as $eirin_division)
-                                <option value="{{ $eirin_division->code}}">{{ $eirin_division->eirin_division}}</option>
-                            @endforeach
-                        </select> --}}
-                        </div>
-                    </div>
                     {{-- <div class="form-group">
                         <label for="exampleFormControlFile1">メイン画像</label>
                         <input type="file" class="form-control-file" id="main_img" name="main_img">

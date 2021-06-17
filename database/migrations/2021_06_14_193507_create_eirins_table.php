@@ -15,9 +15,9 @@ class CreateEirinsTable extends Migration
     {
         Schema::create('eirins', function (Blueprint $table) {
             $table->id();
-            $table->integer('eirin_id');
+            $table->integer('code');
             $table->text('eirin_division');
-            $table->string('eirin_division_icon');
+            $table->text('eirin_division_icon');
             $table->string('eirin_division_explain');
             $table->timestamps();
         });

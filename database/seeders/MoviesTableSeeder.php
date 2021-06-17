@@ -20,7 +20,8 @@ class MoviesTableSeeder extends Seeder
             'screening_start_date'=>'2021/4/1',
             'screening_end_date'=>'2021/12/31',
             'cast'=>'ノーマン・オズボーン、ムーンストーン、ダケン・アキヒロ、アレス、マック・ガーガン、マーベル・ボーイ、セントリー、ブルズアイ',
-            'staff'=>'ザック・スナイダー、ジョス・ウェドン、ルッソ・ブラザーズ'
+            'staff'=>'ザック・スナイダー、ジョス・ウェドン、ルッソ・ブラザーズ',
+            'eirin_division'=>'1'
         ]);
 
         $movie->save();
@@ -31,7 +32,8 @@ class MoviesTableSeeder extends Seeder
             'screening_start_date'=>'2021/4/1',
             'screening_end_date'=>'2021/12/31',
             'cast'=>'ノーマン・オズボーン、ムーンストーン、ダケン・アキヒロ、アレス、マック・ガーガン、マーベル・ボーイ、セントリー、ブルズアイ',
-            'staff'=>'ザック・スナイダー、ジョス・ウェドン、ルッソ・ブラザーズ'
+            'staff'=>'ザック・スナイダー、ジョス・ウェドン、ルッソ・ブラザーズ',
+            'eirin_division'=>'3'
         ]);
 
         $movie->save();
@@ -42,7 +44,8 @@ class MoviesTableSeeder extends Seeder
             'screening_start_date'=>'2021/4/1',
             'screening_end_date'=>'2021/12/31',
             'cast'=>'ノーマン・オズボーン、ムーンストーン、ダケン・アキヒロ、アレス、マック・ガーガン、マーベル・ボーイ、セントリー、ブルズアイ',
-            'staff'=>'ザック・スナイダー、ジョス・ウェドン、ルッソ・ブラザーズ'
+            'staff'=>'ザック・スナイダー、ジョス・ウェドン、ルッソ・ブラザーズ',
+            'eirin_division'=>'4'
         ]);
 
         $movie->save();

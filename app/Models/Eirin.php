@@ -14,4 +14,8 @@ class Eirin extends Model
         'eirin_division_icon',
         'eirin_division_explain'
     ];
+
+    protected $casts = [
+        'options' => 'array',
+    ];
 }

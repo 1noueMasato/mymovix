@@ -47,6 +47,10 @@
                     <div class=" list-group py-3">
                         <div class=" list-group-item bg-light">
                             <h3>{{ $movie->title }}</h3>
+                            <div class="row">
+                                <?php $main_img = $movie->main_img; ?>
+                                <img src="{!! asset('storage/img/movie/'.$main_img) !!}" class="w-25 h-25"  alt="">
+                            </div>
                             {{-- routeで引数送る場合は()内に記述 --}}
                             <a href="{{ route('movies.show', [$movie->id]) }}">作品詳細</a>
                             @if ($movie->eirin_id !== 1)

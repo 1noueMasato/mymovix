@@ -13,7 +13,7 @@
                 更新したい情報を入力してください。
             </div>
             <div class="card-body">
-                <form action="{{ route('movies.update', $movie) }}" method="post">
+                <form action="{{ route('movies.update', $movie) }}" method="post" enctype="multipart/form-data">
                     {{-- ここでpatchを書いておかないとルーティングでgetでもなくpostでもなく、patchを使えない --}}
                     {{ method_field('patch') }}
                     {{-- @method('PATCH') --}}
@@ -63,6 +63,28 @@
                                 <option value="{{ $eirin_division->code}}">{{ $eirin_division->eirin_division}}</option>
                             @endforeach
                         </select> --}}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlFile1">メイン画像</label>
+                        <input type="file" class="form-control-file" id="main_img" name="main_img">
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-6">
+                            <label for="exampleFormControlFile1">作品詳細画像1</label>
+                            <input type="file" class="form-control-file" id="detail_img_1" name="detail_img_1">
+                        </div>
+                        <div class="form-group col-6">
+                            <label for="exampleFormControlFile1">作品詳細画像2</label>
+                            <input type="file" class="form-control-file" id="detail_img_2" name="detail_img_2">
+                        </div>
+                        <div class="form-group col-6">
+                            <label for="exampleFormControlFile1">作品詳細画像3</label>
+                            <input type="file" class="form-control-file" id="detail_img_3" name="detail_img_3">
+                        </div>
+                        <div class="form-group col-6">
+                            <label for="exampleFormControlFile1">作品詳細画像4</label>
+                            <input type="file" class="form-control-file" id="detail_img_4" name="detail_img_4">
                         </div>
                     </div>
                     {{-- <div class="form-group">

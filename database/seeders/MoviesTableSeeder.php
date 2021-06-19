@@ -21,7 +21,8 @@ class MoviesTableSeeder extends Seeder
             'screening_end_date'=>'2021/12/31',
             'cast'=>'ノーマン・オズボーン、ムーンストーン、ダケン・アキヒロ、アレス、マック・ガーガン、マーベル・ボーイ、セントリー、ブルズアイ',
             'staff'=>'ザック・スナイダー、ジョス・ウェドン、ルッソ・ブラザーズ',
-            'eirin_id'=>'1'
+            'eirin_id'=>'1',
+            'main_img'=>''
         ]);
 
         $movie->save();
@@ -33,7 +34,8 @@ class MoviesTableSeeder extends Seeder
             'screening_end_date'=>'2021/12/31',
             'cast'=>'ノーマン・オズボーン、ムーンストーン、ダケン・アキヒロ、アレス、マック・ガーガン、マーベル・ボーイ、セントリー、ブルズアイ',
             'staff'=>'ザック・スナイダー、ジョス・ウェドン、ルッソ・ブラザーズ',
-            'eirin_id'=>'3'
+            'eirin_id'=>'3',
+            'main_img'=>''
         ]);
 
         $movie->save();
@@ -45,7 +47,8 @@ class MoviesTableSeeder extends Seeder
             'screening_end_date'=>'2021/12/31',
             'cast'=>'ノーマン・オズボーン、ムーンストーン、ダケン・アキヒロ、アレス、マック・ガーガン、マーベル・ボーイ、セントリー、ブルズアイ',
             'staff'=>'ザック・スナイダー、ジョス・ウェドン、ルッソ・ブラザーズ',
-            'eirin_id'=>'4'
+            'eirin_id'=>'4',
+            'main_img'=>''
         ]);
 
         $movie->save();

@@ -28,6 +28,7 @@ Route::get('/movie/{movie}','App\Http\Controllers\MoviesController@show')->name(
 //上映作品追加
 Route::get('/movies/create', 'App\Http\Controllers\MoviesController@create')->name('movies.create');
 Route::post('/movies/store', 'App\Http\Controllers\MoviesController@store')->name('movies.store');
+// Route::resource('/movies/store', 'App\Http\Controllers\MoviesController@store')->name('movies.store');
 // ハマった現象
 ///indexのmovie/{movieId}　と　createの/movies/create　のアドレスのmovieの部分が被るとルーティングができなくなる（movieとmoviesに分けて対応）
 

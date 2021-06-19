@@ -35,6 +35,7 @@ class MoviesController extends Controller
 
     //上映作品追加処理
     public function store(Request $request){
+        // dd($request->main_img);
         $movie = new Movie();
         $movie->title = $request->title;
         $movie->content = $request->content;
@@ -42,8 +43,14 @@ class MoviesController extends Controller
         $movie->screening_end_date = $request->screening_end_date;
         $movie->cast = $request->cast;
         $movie->staff = $request->staff;
-        $movie->eirin_id= $request->eirin_id;
-      
+        $movie->eirin_id = $request->eirin_id;
+        
+        //画像保存
+        $movie_img = $request->file('main_img')->store('public/img/movie');
+        
+        //画像の名前取得・DBにファイル名のみ保存
+        $movie->main_img = basename($movie_img);
+
         $movie->save();
 
         return redirect('/');
@@ -72,6 +79,16 @@ class MoviesController extends Controller
         $movie->cast = $request->cast;
         $movie->staff = $request->staff;
         $movie->eirin_id = $request->eirin_id;
+
+        //画像を登録なおした場合のみ変更
+        if($request->file('main_img') !== null){
+            
+            //画像保存
+            $movie_img = $request->file('main_img')->store('public/img/movie');
+            
+            //画像の名前取得・DBにファイル名のみ保存
+            $movie->main_img = basename($movie_img);
+        }
 
         $movie->save();
 

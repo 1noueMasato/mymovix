@@ -20,6 +20,10 @@
             <div class=" list-group py-3">
                 <div class=" list-group-item bg-light">
                     <h3>{{ $movie->title }}</h3>
+                    <div class="row w-75 h-75">
+                        <?php $main_img = $movie->main_img; ?>
+                        <img src="{!! asset('storage/img/movie/'.$main_img) !!}" class="img-fluid"  alt="">
+                    </div>
                     <div>
                         <div class=" d-inline-block" style="background-color: darkgray">STORY</div>
                         <p>{{ $movie->content }}</p>

@@ -22,7 +22,7 @@ class MoviesTableSeeder extends Seeder
             'cast'=>'ノーマン・オズボーン、ムーンストーン、ダケン・アキヒロ、アレス、マック・ガーガン、マーベル・ボーイ、セントリー、ブルズアイ',
             'staff'=>'ザック・スナイダー、ジョス・ウェドン、ルッソ・ブラザーズ',
             'eirin_id'=>'1',
-            'main_img'=>''
+            'main_img'=>'DARK_AVENGERS_ASSEMBLE_main.jpg'
         ]);
 
         $movie->save();
@@ -35,7 +35,7 @@ class MoviesTableSeeder extends Seeder
             'cast'=>'ノーマン・オズボーン、ムーンストーン、ダケン・アキヒロ、アレス、マック・ガーガン、マーベル・ボーイ、セントリー、ブルズアイ',
             'staff'=>'ザック・スナイダー、ジョス・ウェドン、ルッソ・ブラザーズ',
             'eirin_id'=>'3',
-            'main_img'=>''
+            'main_img'=>'DARK_AVENGERS_MOLECULEMAN_main.jpg'
         ]);
 
         $movie->save();
@@ -48,7 +48,7 @@ class MoviesTableSeeder extends Seeder
             'cast'=>'ノーマン・オズボーン、ムーンストーン、ダケン・アキヒロ、アレス、マック・ガーガン、マーベル・ボーイ、セントリー、ブルズアイ',
             'staff'=>'ザック・スナイダー、ジョス・ウェドン、ルッソ・ブラザーズ',
             'eirin_id'=>'4',
-            'main_img'=>''
+            'main_img'=>'DARK_AVENGERS_SIEGE_main.jpg'
         ]);
 
         $movie->save();

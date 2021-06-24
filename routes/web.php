@@ -40,6 +40,11 @@ Route::patch('/movies/{movie}/update', 'App\Http\Controllers\MoviesController@up
 //get送信の変数部分をidにしていたが、movieと書き直したところ、正常に動作。
 //いままでの部分はidを引けていなかったのかもしれない。
 
+//公開停止・削除
+Route::get('/movies/stop/{movie}','App\Http\Controllers\MoviesController@stop')->name('movies.stop');
+Route::get('/movies/stoplist','App\Http\Controllers\MoviesController@stoplist')->name('movies.stoplist');
+Route::get('/movies/resume/{movie}','App\Http\Controllers\MoviesController@resume')->name('movies.resume');
+// Route::delete('movies/stop/{movie}/', 'App\Http\Controllers\MoviesController@delete')->name();
 
 // // get送信の場合は新規登録
 // Route::get('/posts/{post}', 'App\Http\Controllers\PostsController@show')->where('post','[0-9]+');//createがidの中身として認識されてしまうのを防ぐ

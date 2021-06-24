@@ -4,10 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 class Movie extends Model
 {
     use HasFactory;
+    use SoftDeletes;
+
     protected $fillable = [
         'title',
         'content',
@@ -20,9 +24,11 @@ class Movie extends Model
         'detail_img_1',
         'detail_img_2',
         'detail_img_3',
-        'detail_img_4',    
+        'detail_img_4' 
     ];
 
+    protected $dates = ['deleted_at'];
+    
     public function eirin(){
         // dd($this);
         return $this->belongsTo('App\Models\Eirin');

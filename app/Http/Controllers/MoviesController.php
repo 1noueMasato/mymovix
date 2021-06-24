@@ -94,4 +94,22 @@ class MoviesController extends Controller
 
         return redirect('/');
     }
+
+    //論理削除処理
+    public function stop(Movie $movie){
+        // dd($movie);
+        $movie->delete(); 
+        return redirect()->back();
+    }
+
+    //公開停止中の作品一覧へ
+    public function stoplist(){
+        $movies = Movie::onlyTrashed()->get();
+        return view('movies.stoplist')->with('movies',$movies);
+    }
+
+    //公開を再開する
+    public function resume(Movie $movie){
+        dd($movie);
+    }
 }

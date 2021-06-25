@@ -111,5 +111,7 @@ class MoviesController extends Controller
     //公開を再開する
     public function resume(Movie $movie){
         dd($movie);
+        $movie->restore();
+        return redirect()->back();
     }
 }

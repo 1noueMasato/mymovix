@@ -35,7 +35,7 @@ Route::post('/movies/store', 'App\Http\Controllers\MoviesController@store')->nam
 //作品情報編集
 Route::get('/movies/editablelist', 'App\Http\Controllers\MoviesController@editablelist')->name('movies.editablelist');
 Route::get('/movies/edit/{movie}', 'App\Http\Controllers\MoviesController@edit')->name('movies.edit');
-Route::patch('/movies/{movie}/update', 'App\Http\Controllers\MoviesController@update')->name('movies.update');
+Route::patch('/movies/update/{movie}', 'App\Http\Controllers\MoviesController@update')->name('movies.update');
 //更新でハマった部分
 //get送信の変数部分をidにしていたが、movieと書き直したところ、正常に動作。
 //いままでの部分はidを引けていなかったのかもしれない。
@@ -44,6 +44,21 @@ Route::patch('/movies/{movie}/update', 'App\Http\Controllers\MoviesController@up
 Route::get('/movies/stop/{movie}','App\Http\Controllers\MoviesController@stop')->name('movies.stop');
 Route::get('/movies/stoplist','App\Http\Controllers\MoviesController@stoplist')->name('movies.stoplist');
 Route::get('/movies/resume/{movie}','App\Http\Controllers\MoviesController@resume')->name('movies.resume');
+
+// Route::get('/movies/resume/{movie}',function($movie){
+//     dd($movie);
+// })->name('movies.resume');
+
+
+
+
+
+
+
+
+
+
+
 // Route::delete('movies/stop/{movie}/', 'App\Http\Controllers\MoviesController@delete')->name();
 
 // // get送信の場合は新規登録

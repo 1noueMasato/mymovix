@@ -38,32 +38,52 @@
     </div>
     <section class="py-5">
         <div class="text-center">
-            <button type="button" class="btn btn-secondary">日別上映スケジュール<br>鑑賞の日程が決まっている方はこちら</button>
+            <button type="button" class="btn" style="background-color:#DDDDDD">日別上映スケジュール<br>鑑賞の日程が決まっている方はこちら</button>
             <button type="button" class="btn btn-dark">週別上映スケジュール<br>鑑賞の日程が決まっていない方はこちら</button>
         </div>
-        <div class="bg-secondary">
+        <div style="background-color:#DDDDDD">
             <div class="container">
                 @forelse($movies as $movie)
-                    <div class=" list-group py-3">
-                        <div class=" list-group-item bg-light">
-                            <h3>{{ $movie->title }}</h3>
-                            <div class="row">
-                                <?php $main_img = $movie->main_img; ?>
-                                <img src="{!! asset('storage/img/movie/'.$main_img) !!}" class="w-25 h-25"  alt="">
-                            </div>
-                            {{-- routeで引数送る場合は()内に記述 --}}
-                            <a href="{{ route('movies.show', [$movie->id]) }}">作品詳細</a>
-                            @if ($movie->eirin_id !== 1)
-                                <div class="row my-1">
-                                    <div class=" border border-dark rounded-circle col-1 text-center">
-                                        {{ $movie->eirin->eirin_division }}</div>
+                    <div class=" list-group py-3" >
+                        <div class=" list-group-item" style="background-color: #808080">
+                            <?php $id = 'movie' . $movie->id; ?>
+                            <div class="accordion" id="{{ 'accordion-' . $id }}">
+                                <div class="row">
+                                    <h3 class=" col-10">{{ $movie->title }}</h3>
+                                    <div class=" text-right col-2">
+                                        <button id="top-accordion-button" class=" btn-gray rounded-circle p-0" type="button"
+                                            data-toggle="collapse" data-target="{{ '#collapse-' . $id }}"
+                                            aria-expanded="true" aria-controls="{{ 'collapse-' . $id }}"
+                                            style="width:2rem;height:2rem;">
+                                            <h3 id="top-accordion-button-icon">-</h3>
+                                        </button>
+                                    </div>
                                 </div>
-                                {{-- <div class="row">
-                                    <div class=" col-2 "> --}}
+                                <div id="{{ 'collapse-' . $id }}" class="collapse show" aria-labelledby="headingOne"
+                                    data-parent="{{ '#accordion-' . $id }}">
+                                    <div class="row">
+                                        <?php $main_img = $movie->main_img; ?>
+                                        <img src="{!! asset('storage/img/movie/' . $main_img) !!}" class="w-25 h-25 col-2" alt="">
+                                        <div class=" col-2 px-0">
+                                                <div style="background-color: #808080" class="w-100 py-2">シアター１</div>
+                                                <div style="background-color:darkgray" class="h-75">12:00~</div>
+                                        </div>
+                                    </div>
+                                    {{-- routeで引数送る場合は()内に記述 --}}
+                                    <a href="{{ route('movies.show', [$movie->id]) }}">作品詳細</a>
+                                    @if ($movie->eirin_id !== 1)
+                                        <div class="row my-1">
+                                            <div class=" border border-dark rounded-circle col-1 text-center">
+                                                {{ $movie->eirin->eirin_division }}</div>
+                                        </div>
+                                        {{-- <div class="row">
+                                            <div class=" col-2 "> --}}
                                         {{ $movie->eirin->eirin_division_explain }}
-                                    {{-- </div>
-                                </div> --}}
-                            @endif
+                                        {{-- </div>
+                                        </div> --}}
+                                    @endif
+                                </div>
+                            </div>
                         </div>
                     </div>
                 @empty

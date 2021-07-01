@@ -109,9 +109,12 @@ class MoviesController extends Controller
     }
 
     //公開を再開する
-    public function resume(Movie $movie){
-        dd($movie);
-        $movie->restore();
+    public function resume(Request $request){
+        // dd($request->id);
+       Movie::onlyTrashed()->where('id',$request->id)->restore();
+        // Movie::withTrashed()->restore();
+        // dd($movie);
+        // $movie->restore();
         return redirect()->back();
     }
 }

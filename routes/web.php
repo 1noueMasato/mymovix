@@ -43,7 +43,10 @@ Route::patch('/movies/update/{movie}', 'App\Http\Controllers\MoviesController@up
 //公開停止・削除
 Route::get('/movies/stop/{movie}','App\Http\Controllers\MoviesController@stop')->name('movies.stop');
 Route::get('/movies/stoplist','App\Http\Controllers\MoviesController@stoplist')->name('movies.stoplist');
-Route::get('/movies/resume/{movie}','App\Http\Controllers\MoviesController@resume')->name('movies.resume');
+// Route::get('/movies/resume/{movie}','App\Http\Controllers\MoviesController@resume')->name('movies.resume');
+Route::get('/movies/resume','App\Http\Controllers\MoviesController@resume')->name('movies.resume');
+// softdeleteされたレコードは検索対象外＝存在しない＝URLにいれると404エラーになる
+// routeでurlで変数を送るやり方ではエラーになるのでhiddenで送る→requestで受け取る
 
 // Route::get('/movies/resume/{movie}',function($movie){
 //     dd($movie);

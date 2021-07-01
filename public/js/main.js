@@ -1,7 +1,25 @@
 // (function(){
 
 
-    'use strict';
+'use strict';
+
+$("#top-accordion-button").on("click", function () {
+    // $("#top-accordion-button-icon").text("〇");
+    $("#top-accordion-button-icon").toggle(accordionIconChange);
+});
+
+function accordionIconChange() {
+    // $("#top-accordion-button-icon").text("ma")
+    // alert($("#top-accordion-button").attr("aria-expanded"));
+    if ($("#top-accordion-button").attr("aria-expanded")){
+        $("#top-accordion-button-icon").text("-")
+    } else {
+        $("#top-accordion-button-icon").text("ma")
+    };
+}
+
+
+
     //テキストエリアを文字数分だけ行を広げる
     // $("textarea").attr("rows", 1).on("input", e => {
     //     $(e.target).height(0).innerHeight(e.target.scrollHeight);
@@ -18,12 +36,17 @@
     //       }
     //     });
     //   });
-   
- 
+
+
+
+
+
+
+
 //     function test(){
 //         alert("hello")
 //     }
-      
+
 //     jQuery (function ()
 // {
 //         jQuery("#outarea_aa").text ("*** ex01.js *** start ***")
@@ -36,19 +59,19 @@
 // })
 
 
- 
+
 //     document.getElementsByClassName('test_jquery').addEventListener('click',function(){
 //         alert("Hi");
 //     })
-      
 
-    
+
+
 
 //     // delクラスを取得
 //     var cmds = document.getElementsByClassName('del');
-    
 
-    
+
+
 //     // カウンター用変数
 //     var i; 
 

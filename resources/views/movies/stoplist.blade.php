@@ -13,19 +13,22 @@
             </div>
             <div class=" card-body">
                 @forelse($movies as $movie)
-                    <div class=" list-group py-3">
-                        <div class=" list-group-item bg-light">
-                            <div class="row">
-                                <h3 class="col-6">{{ $movie->title }}</h3>
-                                {{-- routeで引数送る場合は()内に記述 --}}
-                                {{-- <a href="{{ route('movies.edit', [$movie->id]) }}" class="col-2">作品情報を更新</a> 全く同じなのにここだけできない…--}}
-                                <a href="{{ route('movies.resume', $movie->id) }}" class="col-2">公開を再開する</a>
-                                <a href="#" class="col-2 text-danger">作品情報を削除</a>
+                        <div class=" list-group py-3">
+                            <div class=" list-group-item bg-light">
+                                <div class="row">
+                                    <h3 class="col-6">{{ $movie->title }}</h3>
+                                    {{-- routeで引数送る場合は()内に記述 --}}
+                                    {{-- <a href="{{ route('movies.edit', [$movie->id]) }}" class="col-2">作品情報を更新</a> 全く同じなのにここだけできない…--}}
+                                   <form action="{{ route('movies.resume') }}">
+                                    <input type="hidden" name="id" value="{{ $movie->id }}">
+                                    <input type="submit" value="公開を再開する" class=" text-primary border-0 bg-light">
+                                   </form>
+                                    <a href="#" class="col-2 text-danger">作品情報を削除</a>
+                                </div>
+                                <p class=" d-inline-block mr-5">公開開始：{{ $movie->screening_start_date }}</p>
+                                <p class=" d-inline-block">公開終了：{{ $movie->screening_end_date }}</p>
                             </div>
-                            <p class=" d-inline-block mr-5">公開開始：{{ $movie->screening_start_date }}</p>
-                            <p class=" d-inline-block">公開終了：{{ $movie->screening_end_date }}</p>
                         </div>
-                    </div>
                 @empty
                     <div class="list-group py-3">
                         <div class=" list-group-item bg-light">

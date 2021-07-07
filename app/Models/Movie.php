@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 
@@ -32,6 +33,17 @@ class Movie extends Model
     public function eirin(){
         // dd($this);
         return $this->belongsTo('App\Models\Eirin');
+    }
+
+    public function screeningTimes(){
+        return $this->hasMany('App\Models\ScreeningTime');
+    }
+
+    public function TodayScreeningTime(){
+        return $this
+        ->with('screeningTimes')
+        ->whereHas('screeningTimes',function($q){$q->where('screening_date', date("Y/m/d"));})
+        ->get();
     }
 
     //リレーションシップの記述法

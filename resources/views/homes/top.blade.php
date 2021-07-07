@@ -44,7 +44,7 @@
         <div style="background-color:#DDDDDD">
             <div class="container">
                 @forelse($movies as $movie)
-                    <div class=" list-group py-3" >
+                    <div class=" list-group py-3">
                         <div class=" list-group-item" style="background-color: #808080">
                             <?php $id = 'movie' . $movie->id; ?>
                             <div class="accordion" id="{{ 'accordion-' . $id }}">
@@ -64,10 +64,12 @@
                                     <div class="row">
                                         <?php $main_img = $movie->main_img; ?>
                                         <img src="{!! asset('storage/img/movie/' . $main_img) !!}" class="w-25 h-25 col-2" alt="">
-                                        <div class=" col-2 px-0">
-                                                <div style="background-color: #808080" class="w-100 py-2">シアター１</div>
-                                                <div style="background-color:darkgray" class="h-75">12:00~</div>
+                                        
+                                        <div class=" col-2 px-0 mr-2">
+                                            <div style="background-color: #808080" class="w-100 py-2">シアター１</div>
+                                            <div style="background-color:white" class="h-75"></div>
                                         </div>
+                                      
                                     </div>
                                     {{-- routeで引数送る場合は()内に記述 --}}
                                     <a href="{{ route('movies.show', [$movie->id]) }}">作品詳細</a>

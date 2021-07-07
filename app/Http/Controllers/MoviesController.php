@@ -5,15 +5,18 @@ namespace App\Http\Controllers;
 use App\Models\Eirin;
 use Illuminate\Http\Request;
 use App\Models\Movie;
-
+use App\Models\ScreeningTime;
 
 class MoviesController extends Controller
 {
     //Top画面一覧表示
     public function index(){
         $movies = Movie::oldest()->get(); //created_idが古い順に取得してきて、その中にget。 latest()で古い順
+        // $movies = Movie::with('screeningTimes')->whereHas('screeningTimes',function($q){$q->where('screening_date', date("Y/m/d"));})->get();
+        // $movies = ScreeningTime::with('movie')->where('screening_date', date("Y/m/d"))->get();
         //$movies =[];
-        //dd($movies->toArray());// ddはその場で処理しておわる
+        // dd($movies);
+        // ddはその場で処理しておわる
         return view('homes.top')->with('movies',$movies); //homesのフォルダ中のtopを返す,withでこの関数で定義した$moviesをmoviesって名前でviewと一緒に（with）returnします
     }
 

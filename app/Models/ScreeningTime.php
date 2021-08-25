@@ -26,4 +26,9 @@ class ScreeningTime extends Model
     public function movie(){
         return $this->belongsTo('App\Models\Movie');
     }
+
+    public function todayScreeningTime(){  
+        return $this
+       ->where('screening_date', date("Y/m/d"))->first();
+    }
 }

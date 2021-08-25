@@ -43,33 +43,111 @@
         </div>
         <div style="background-color:#DDDDDD">
             <div class="container">
+
+
+                <?php
+                // movieのidのみを入れた配列を作成
+                $screenTimeMovieIdsArray = array_column($screeningTimes, 'movie_id');
+                
+                //上映スケジュールの配列データ要素数
+                $screeningTimesCount = count($screeningTimes);
+                
+                ?>
+
                 @forelse($movies as $movie)
+
+
+                    <?php
+                    
+                    //それぞれの映画の上映スケジュールだけを入れるリスト
+                    $screeningTimeList = [];
+                    
+                    // movieのidだけの配列（screenTimeMovieIdsArray）から、screeningTimeのmovie_idとmovieのidが等しいデータが入ってる、配列の番号を取得
+                    //この映画のidの上映スケジュールデータが入っている配列の番号はscreenTimeMovieIdsArrayNum
+                    $movieId = $movie->id;
+                    $screenTimeMovieIdsArrayNum = array_search($movieId, $screenTimeMovieIdsArray);
+                    
+                    //第何回の上映時間かをカウントする変数
+                    $count = 1;
+                    
+                    for ($i = 0; $i < 5; $i++) {
+                        $screeningStartTime = 'screen_start_time_' . $count;
+                        $screeningEndTime = 'screen_end_time_' . $count;
+                    
+                        if (isset($screeningTimes[$screenTimeMovieIdsArrayNum][$screeningStartTime])) {
+                            //上映開始時間がnullなら処理をストップ
+                    
+                            //screeningTimesのidが同じ番号の中の$count目の上映開始終了時間を変数に入れる
+                            $screeningStartAndEndTime = [$screeningStartTime => $screeningTimes[$screenTimeMovieIdsArrayNum][$screeningStartTime], $screeningEndTime => $screeningTimes[$screenTimeMovieIdsArrayNum][$screeningEndTime]];
+                    
+                            //上映開始終了時間を$screeningTimeListの中に追加する
+                            array_push($screeningTimeList, $screeningStartAndEndTime);
+                    
+                            //次の上映開始終了時間の変数の処理へ
+                            $count++;
+                        } else {
+                            break;
+                        }
+                    }
+                    
+                    //null判定
+                    //定義されててnullじゃなければtrue
+                    // dd(isset($screeningTimeList[3]['screen_start_time_4']));
+                    
+                    //nullならtrue
+                    // empty($screeningTimeList[3]['screen_start_time_4']);
+                    
+                    ?>
+
                     <div class=" list-group py-3">
                         <div class=" list-group-item" style="background-color: #808080">
                             <?php $id = 'movie' . $movie->id; ?>
                             <div class="accordion" id="{{ 'accordion-' . $id }}">
-                                <div class="row">
-                                    <h3 class=" col-10">{{ $movie->title }}</h3>
-                                    <div class=" text-right col-2">
-                                        <button id="top-accordion-button" class=" btn-gray rounded-circle p-0" type="button"
-                                            data-toggle="collapse" data-target="{{ '#collapse-' . $id }}"
-                                            aria-expanded="true" aria-controls="{{ 'collapse-' . $id }}"
-                                            style="width:2rem;height:2rem;">
-                                            <h3 id="top-accordion-button-icon">-</h3>
-                                        </button>
+                                <div class="container">
+                                    <div class="row">
+                                        <h3 class=" col-10">{{ $movie->title }}</h3>
+                                        <div class=" text-right col-2">
+                                            <button id="top-accordion-button" class=" btn-gray rounded-circle p-0"
+                                                type="button" data-toggle="collapse"
+                                                data-target="{{ '#collapse-' . $id }}" aria-expanded="true"
+                                                aria-controls="{{ 'collapse-' . $id }}" style="width:2rem;height:2rem;">
+                                                <h3 id="top-accordion-button-icon">-</h3>
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                                 <div id="{{ 'collapse-' . $id }}" class="collapse show" aria-labelledby="headingOne"
                                     data-parent="{{ '#accordion-' . $id }}">
-                                    <div class="row">
-                                        <?php $main_img = $movie->main_img; ?>
-                                        <img src="{!! asset('storage/img/movie/' . $main_img) !!}" class="w-25 h-25 col-2" alt="">
-                                        
-                                        <div class=" col-2 px-0 mr-2">
-                                            <div style="background-color: #808080" class="w-100 py-2">シアター１</div>
-                                            <div style="background-color:white" class="h-75"></div>
+                                    <div class=" container">
+                                        <div class="row">
+                                            <?php $main_img = $movie->main_img; ?>
+                                            <img src="{!! asset('storage/img/movie/' . $main_img) !!}" class="w-25 h-25 col-2" alt="">
+
+                                            @foreach ($screeningTimeList as $screeningTime)
+                                                {{-- 上映スケジュールのリスト番号と、第何回の上映回かを表す変数を繰り返しの前に定義 --}}
+
+                                                <div class=" col-2 px-0" style="border: solid; border-color:#808080;">
+                                                    <div style="background-color: #808080" class="w-100 py-2">シアター１</div>
+
+                                                    <?php
+                                                    $index = $loop->index;
+                                                    $screeningTimeNum = $index + 1;
+                                                    $startTime = 'screen_start_time_' . $screeningTimeNum;
+                                                    $endTime = 'screen_end_time_' . $screeningTimeNum;
+                                                    // dd($screeningTimeList[$index][$startTime]);
+                                                    ?>
+
+                                                    <div style="background-color:white" class="h-75">
+                                                        {{ $screeningTimeList[$index][$startTime] }}
+                                                        <br>~<br>
+                                                        {{ $screeningTimeList[$index][$endTime] }}
+
+                                                    </div>
+
+                                                </div>
+                                            @endforeach
+
                                         </div>
-                                      
                                     </div>
                                     {{-- routeで引数送る場合は()内に記述 --}}
                                     <a href="{{ route('movies.show', [$movie->id]) }}">作品詳細</a>
@@ -88,6 +166,7 @@
                             </div>
                         </div>
                     </div>
+
                 @empty
                     <div class="list-group py-3">
                         <div class=" list-group-item bg-light">
@@ -95,6 +174,9 @@
                         </div>
                     </div>
                 @endforelse
+
+
+
             </div>
         </div>
 

@@ -39,12 +39,7 @@ class Movie extends Model
         return $this->hasMany('App\Models\ScreeningTime');
     }
 
-    public function TodayScreeningTime(){
-        return $this
-        ->with('screeningTimes')
-        ->whereHas('screeningTimes',function($q){$q->where('screening_date', date("Y/m/d"));})
-        ->get();
-    }
+    
 
     //リレーションシップの記述法
     //１：2つのModelにリレーションを記述（1対多など）。

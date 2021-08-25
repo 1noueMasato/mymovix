@@ -11,13 +11,18 @@ class MoviesController extends Controller
 {
     //Top画面一覧表示
     public function index(){
-        $movies = Movie::oldest()->get(); //created_idが古い順に取得してきて、その中にget。 latest()で古い順
-        // $movies = Movie::with('screeningTimes')->whereHas('screeningTimes',function($q){$q->where('screening_date', date("Y/m/d"));})->get();
+        // $movies = Movie::oldest()->get(); //created_idが古い順に取得してきて、その中にget。 latest()で古い順
+        $today = date("Y-m-d");
+        $movies = Movie::with('screeningTimes')->whereHas('screeningTimes',function($query) use($today){$query->whereDate('screening_date',$today);})->get();
+        $screeningTimes = ScreeningTime::with('movie')->whereDate('screening_date',$today)->orderBy('movie_id')->get()->toArray();
+        // dd($screeningtimes[0]['movie']['title']);
         // $movies = ScreeningTime::with('movie')->where('screening_date', date("Y/m/d"))->get();
-        //$movies =[];
-        // dd($movies);
-        // ddはその場で処理しておわる
-        return view('homes.top')->with('movies',$movies); //homesのフォルダ中のtopを返す,withでこの関数で定義した$moviesをmoviesって名前でviewと一緒に（with）returnします
+
+        // foreach($movies as $movie){
+        //     dd($movie->id);
+        // }
+     
+        return view('homes.top')->with('movies',$movies)->with('screeningTimes',$screeningTimes); //homesのフォルダ中のtopを返す,withでこの関数で定義した$moviesをmoviesって名前でviewと一緒に（with）returnします
     }
 
     //作品詳細

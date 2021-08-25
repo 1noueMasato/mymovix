@@ -11,12 +11,34 @@ $("#top-accordion-button").on("click", function () {
 function accordionIconChange() {
     // $("#top-accordion-button-icon").text("ma")
     // alert($("#top-accordion-button").attr("aria-expanded"));
-    if ($("#top-accordion-button").attr("aria-expanded")){
+    if ($("#top-accordion-button").attr("aria-expanded")) {
         $("#top-accordion-button-icon").text("-")
     } else {
         $("#top-accordion-button-icon").text("ma")
     };
 }
+
+// 週間スケジュールボタン押したときの処理
+
+$("#weeklybtn").on("click", function () {
+    $("#dailybtn").addClass("btn-dark");
+    $("#dailybtn").css("background-color","");
+    $("#weeklybtn").css("background-color","#DDDDDD");
+    $("#weeklybtn").removeClass("btn-dark");
+    $("#dailytab").css("display","none");
+    $("#weeklytab").css("display","");
+});
+
+//日別上映スケジュールボタン押したときの処理
+
+$("#dailybtn").on("click", function () {
+    $("#weeklybtn").addClass("btn-dark");
+    $("#weeklybtn").css("background-color","");
+    $("#dailybtn").css("background-color","#DDDDDD");
+    $("#dailybtn").removeClass("btn-dark");
+    $("#weeklytab").css("display","none");
+    $("#dailytab").css("display","");
+});
 
 
 
